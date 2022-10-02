@@ -151,7 +151,9 @@ module.exports.decodeRecordData40 = (recordData)=>{
         .toString('ascii')
         .split('\0')
         .shift(),
+        verifyType: recordData.readUIntLE(26, 1),
         recordTime: parseTimeToDate(recordData.readUInt32LE(27)).toString(),
+        verifyState: recordData.readUIntLE(31, 1),
       }
       return record
 }
