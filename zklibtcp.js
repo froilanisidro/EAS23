@@ -237,6 +237,11 @@ class ZKLibTCP {
         console.log(reply)
 
       }
+
+      if(!reply) {
+        reject("EMPTYREPLY")
+        return
+      }
       
       const header = decodeTCPHeader(reply.subarray(0, 16))
       switch (header.commandId) {
